@@ -1,29 +1,27 @@
-menu = {
-    "pizza" : 13.00,
-    "nachos" : 7.00,
-    "hotdog" : 12.50,
-    "chips" : 6.00,
-    "lemonade" : 3.20,
-}
-
-cart = []
-total = 0
+import random 
 
 
-print("------MENU------")
-for key,value in menu.items():
-    print(f"{key:10}: {value: .2f}")
-print("----------------")
+number = random.randint(1,100)
+num = 0 
+print("********************")
+print("ENTER NUM FROM 1 - 100")
+
 
 while True:
-    food = input("Enter Food press q to quit: ").lower()
-    if food == 'q':
+    guess = int(input("Enter Guess:"))
+
+    if guess>100 or guess <1:
+        print("Between 1 to 100 only!!")
+    elif guess>number:
+        print("Too High!")
+        num += 1
+    elif guess<number:
+        print("Too Low")
+        num +=1
+    else:
+        print(f"You are Correct!")
         break
-    elif menu.get(food) is not None:
-        cart.append(food)
-        total += menu.get(food)
 
-for food in cart:
-    print (food)
+print(f"Game over. It took you {num} guesses")
 
-print(total)
+5
