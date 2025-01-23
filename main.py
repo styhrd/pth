@@ -1,29 +1,29 @@
-questions = ["What is My Name? ",
-             "What is my Team? ",
-             "Who is my favorite Player? "]
+menu = {
+    "pizza" : 13.00,
+    "nachos" : 7.00,
+    "hotdog" : 12.50,
+    "chips" : 6.00,
+    "lemonade" : 3.20,
+}
 
-options = (("A. Miguel","B. Juan","C. Aklas"),
-           ("A. Dallas", "B. Celtics", "C. Wolves"),
-           ("A. Kobe", "B. Jordan", "C. Ant"))
-
-answers=("A","C","C")
-guesses=[]
-score = 0 
-question_num = 0
-
-for question in questions:
-    print("**********************")
-    print(question)
-    for option in options[question_num]:
-        print(option)
-    guess = input("Enter Your Guess: ")
-    guesses.append(guess)
-    if guess == answers[question_num]:
-        print("Correct!")
-        score += 1
-    else:
-        print("Incorrect")
-    question_num +=1
+cart = []
+total = 0
 
 
-print (f"Total Score: {score}")
+print("------MENU------")
+for key,value in menu.items():
+    print(f"{key:10}: {value: .2f}")
+print("----------------")
+
+while True:
+    food = input("Enter Food press q to quit: ").lower()
+    if food == 'q':
+        break
+    elif menu.get(food) is not None:
+        cart.append(food)
+        total += menu.get(food)
+
+for food in cart:
+    print (food)
+
+print(total)
